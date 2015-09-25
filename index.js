@@ -55,9 +55,9 @@ module.exports = function (options) {
 
           if (src && !src.match(/.*(\/\/).*/)) {
             src = url.parse(src).pathname;
-
-            var stats = fs.statSync(path.join(options.cwd, src));
-            $asset.attr(attributes.srcAttribute,  src + '?' + options.suffix + '=' + +stats.mtime);
+            
+            var timestamp = new Date().getTime();
+            $asset.attr(attributes.srcAttribute,  src + '?' + options.suffix + '=' + +timestamp);
           }
         }
       }
